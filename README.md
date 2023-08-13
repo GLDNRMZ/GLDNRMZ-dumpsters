@@ -1,5 +1,6 @@
 # lb-dumpsters
 Dumpster Diving and Trash Selling
+
 Original script by [zf-labo](https://github.com/zf-labo/zf-dumpster-qb)
 
 # Additions
