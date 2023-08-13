@@ -4,13 +4,13 @@ Config = {}
 ----BIN----
 -----------
 Config.Props = {
-    `prop_dumpster_4b`,
-    `prop_dumpster_4a`,
-    `prop_dumpster_3a`,
-    `prop_dumpster_02b`,
-    `prop_dumpster_02a`,
-    `prop_dumpster_01a`,
-    `prop_snow_dumpster_01`,
+    'prop_dumpster_4b',
+    'prop_dumpster_4a',
+    'prop_dumpster_3a',
+    'prop_dumpster_02b',
+    'prop_dumpster_02a',
+    'prop_dumpster_01a',
+    'prop_snow_dumpster_01',
     'prop_bin_14a',
     'prop_recyclebin_05_a',
     'prop_bin_14b',
