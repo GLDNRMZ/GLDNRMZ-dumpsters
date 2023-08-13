@@ -72,7 +72,6 @@ function DropItem(finished, netId, playerId)
     for tierName, tierData in pairs(Config.LootTiers) do
         if tierRoll <= tierData.chances then
             selectedTier = tierData
-            --print("Selected Tier:", tierName, "with roll:", tierRoll)
             break
         else
             tierRoll = tierRoll - tierData.chances
@@ -80,7 +79,6 @@ function DropItem(finished, netId, playerId)
     end
 
     if not selectedTier then
-        --print("ERROR: No tier selected for loot drop")
         return
     end
 
@@ -116,28 +114,68 @@ end)
 -----------
 ----BUM----
 -----------
+
+--selling
 RegisterNetEvent('lb-dumpster:server:sellItems', function()
     local src = source
-    local price = 0
+    local totalPrice = 0
     local Player = QBCore.Functions.GetPlayer(src)
 
-    if Player.PlayerData.items ~= nil and next(Player.PlayerData.items) ~= nil then
+    if Player.PlayerData.items then
+        local removedItems = {}
+
         for k, v in pairs(Player.PlayerData.items) do
-            if Player.PlayerData.items[k] ~= nil then
-                if Config.Items[Player.PlayerData.items[k].name] ~= nil then
-                    price = price + (Config.Items[Player.PlayerData.items[k].name].price * Player.PlayerData.items[k].amount)
-                    Player.Functions.RemoveItem(Player.PlayerData.items[k].name, Player.PlayerData.items[k].amount, k)
-                    TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[Player.PlayerData.items[k].name], "remove")
+            local itemName = v.name
+
+            if Config.ItemsSell[itemName] then
+                local itemPrice = Config.ItemsSell[itemName].price * v.amount
+                totalPrice = totalPrice + itemPrice
+                removedItems[k] = { name = itemName, amount = v.amount }
+                Player.Functions.RemoveItem(itemName, v.amount, k)
+                TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[itemName], "remove")
+            end
+        end
+
+        if totalPrice > 0 then
+            Player.Functions.AddMoney("cash", totalPrice)
+            TriggerClientEvent('QBCore:Notify', src, "Here's $"..totalPrice..", piss off.")
+        else
+            TriggerEvent('lb-dumpster:server:pedStealItems', src)
+        end
+    end
+end)
+
+--stealing
+RegisterNetEvent('lb-dumpster:server:pedStealItems', function(src)
+    local Player = QBCore.Functions.GetPlayer(src)
+    local itemsStolen = false -- Flag to track if any items are stolen
+
+    if Player.PlayerData.items then
+        local removedItems = {}
+
+        for k, v in pairs(Player.PlayerData.items) do
+            local itemName = v.name
+
+            if Config.ItemsSteal[itemName] then
+                local chance = math.random(1, 100)
+
+                if chance <= Config.StealChance then
+                    local amountToSteal = math.random(1, v.amount)
+                    removedItems[k] = { name = itemName, amount = amountToSteal }
+                    Player.Functions.RemoveItem(itemName, amountToSteal, k)
+                    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[itemName], "remove")
+                    itemsStolen = true -- Set the flag to true
                 end
             end
         end
 
-        if price > 0 then
-            Player.Functions.AddMoney("cash", price)
-            TriggerClientEvent('QBCore:Notify', src, "Here's $"..price..", piss off.")
-        else
-            TriggerClientEvent('QBCore:Notify', src, "You ain't got shit I want")
+        if next(removedItems) then
+            TriggerClientEvent('QBCore:Notify', src, "GIVE ME YO SHIT, BITCH!")
+            TriggerEvent('lb-dumpster:server:onPedStealItems', src, removedItems)
         end
-    
+    end
+
+    if not itemsStolen then
+        TriggerClientEvent('QBCore:Notify', src, "You ain't got shit I want")
     end
 end)
