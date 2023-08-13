@@ -72,6 +72,7 @@ function DropItem(finished, netId, playerId)
     for tierName, tierData in pairs(Config.LootTiers) do
         if tierRoll <= tierData.chances then
             selectedTier = tierData
+            --print("Selected Tier:", tierName, "with roll:", tierRoll)
             break
         else
             tierRoll = tierRoll - tierData.chances
@@ -79,6 +80,7 @@ function DropItem(finished, netId, playerId)
     end
 
     if not selectedTier then
+        --print("ERROR: No tier selected for loot drop")
         return
     end
 
@@ -175,6 +177,7 @@ RegisterNetEvent('lb-dumpster:server:pedStealItems', function(src)
         end
     end
 
+    -- If no items are stolen, trigger the "You ain't got shit I want" notification
     if not itemsStolen then
         TriggerClientEvent('QBCore:Notify', src, "You ain't got shit I want")
     end
