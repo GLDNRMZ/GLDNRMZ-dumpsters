@@ -58,7 +58,7 @@ Config.MaxLootItem = 1 -- If Config.CanLootMultiple = true. Max items the player
 
 -- Tiered loot system
 Config.LootTiers = {
-    ["tier1"] = {
+    ['tier1'] = {
         chances = 75, -- The chances for this tier to be selected (out of 100)
         loottable = {
             {item = 'cd',              min = 1,    max = 2},
@@ -75,11 +75,10 @@ Config.LootTiers = {
             {item = 'can',             min = 1,    max = 2},
             {item = 'wires',           min = 1,    max = 2},
             {item = 'ducttape',        min = 1,    max = 2},
-
             -- Add more items to this tier as needed
         }
     },
-    ["tier2"] = {
+    ['tier2'] = {
         chances = 25,
         loottable = {
             {item = 'metalscrap',       min = 2,    max = 5},
@@ -92,11 +91,10 @@ Config.LootTiers = {
             {item = 'water_bottle',     min = 1,    max = 3},
             {item = 'vodka',            min = 1,    max = 3},
             {item = 'lockpick',         min = 1,    max = 3},
-
             -- Add more items to this tier as needed
         }
     },
-    ["tier3"] = {
+    ['tier3'] = {
         chances = 15,
         loottable = {
             { item = 'emptyvape',          min = 1,    max = 1 },
@@ -105,7 +103,7 @@ Config.LootTiers = {
             -- Add more items to this tier as needed
         }
     },
-    ["tier4"] = {
+    ['tier4'] = {
         chances = 5,
         loottable = {
             { item = 'pistol_ammo',      min = 1,    max = 3 },
@@ -114,7 +112,7 @@ Config.LootTiers = {
             -- Add more items to this tier as needed
         }
     },
-    ["tier5"] = {
+    ['tier5'] = {
         chances = 3,
         loottable = {
             { item = 'cocainekey',      min = 1,    max = 1 },
@@ -123,7 +121,7 @@ Config.LootTiers = {
             -- Add more items to this tier as needed
         }
     },
-    ["tier6"] = {
+    ['tier6'] = {
         chances = 1,
         loottable = {
             { item = 'weapon_pistol',      min = 1,    max = 1 },
@@ -148,28 +146,33 @@ Config.pedModels = {
     'a_m_o_soucent_03',
     'a_m_o_soucent_02',
 }
-Config.Items = {
-    ["cd"]              = {["price"] = math.random(10, 15)},
-    ["newspaper"]       = {["price"] = math.random(10, 15)},
-    ["wrapper"]         = {["price"] = math.random(10, 15)},
-    ["rat"]             = {["price"] = math.random(10, 15)},
-    ["roach"]           = {["price"] = math.random(10, 15)},
-    ["gum"]             = {["price"] = math.random(10, 15)},
-    ["napkin"]          = {["price"] = math.random(10, 15)},
-    ["cardboard"]       = {["price"] = math.random(10, 15)},
-    ["safetypin"]       = {["price"] = math.random(10, 15)},
-    ["scrapwood"]       = {["price"] = math.random(10, 15)},
-    --[[["ambeer"]          = {["price"] = (0)}, 
-    ["dusche-beer"]     = {["price"] = (0)}, 
-    ["logger-beer"]     = {["price"] = (0)}, 
-    ["stronzo-beer"]    = {["price"] = (0)}, 
-    ["meth"]            = {["price"] = (0)},
-    ["coke"]            = {["price"] = (0)},
-    ["lsd"]             = {["price"] = (0)},
-    ["heroin"]          = {["price"] = (0)},
-    ["joint"]           = {["price"] = (0)},  
-    ['tosti']           = {["price"] = (0)},			
-    ['twerks_candy']    = {["price"] = (0)},	
-    ['snikkel_candy']   = {["price"] = (0)},	
-    ['sandwich']        = {["price"] = (0)},--]]	
+
+Config.ItemsSell = {
+    ['cd']              = {['price'] = math.random(10, 15)},
+    ['newspaper']       = {['price'] = math.random(10, 15)},
+    ['wrapper']         = {['price'] = math.random(10, 15)},
+    ['rat']             = {['price'] = math.random(10, 15)},
+    ['roach']           = {['price'] = math.random(10, 15)},
+    ['gum']             = {['price'] = math.random(10, 15)},
+    ['napkin']          = {['price'] = math.random(10, 15)},
+    ['cardboard']       = {['price'] = math.random(10, 15)},
+    ['safetypin']       = {['price'] = math.random(10, 15)},
+    ['scrapwood']       = {['price'] = math.random(10, 15)},
+}
+
+Config.StealChance = 50
+Config.ItemsSteal = {
+    ['ambeer'], 
+    ['dusche-beer'], 
+    ['logger-beer'], 
+    ['stronzo-beer'], 
+    ['meth'],
+    ['coke'],
+    ['lsd'],
+    ['heroin'],
+    ['joint'],  
+    ['tosti'],			
+    ['twerks_candy'],	
+    ['snikkel_candy'],	
+    ['sandwich'],
 }
