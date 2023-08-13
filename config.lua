@@ -145,6 +145,8 @@ Config.pedModels = {
     'u_m_o_tramp_01',
     'a_m_o_soucent_03',
     'a_m_o_soucent_02',
+    'a_m_m_skidrow_01',
+    'a_f_m_skidrow_01',
 }
 
 Config.ItemsSell = {
