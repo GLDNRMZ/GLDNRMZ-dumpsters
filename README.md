@@ -28,6 +28,8 @@ Original dumpster script by [zf-labo](https://github.com/zf-labo/zf-dumpster-qb)
 	
 # Add Images to Inventory Script
 
+# Change config.lua Options and Items to Fit Your Servers Needs.
+
 # Dependencies:
 * [qb-core](https://github.com/qbcore-framework/qb-core)
 * [qb-target](https://github.com/qbcore-framework/qb-target)
