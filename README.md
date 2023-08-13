@@ -9,6 +9,8 @@ Original script by [zf-labo](https://github.com/zf-labo/zf-dumpster-qb)
 * Sell trash items to any homeless ped
 * Chance homeless ped steals your food and drugs
 
+# Add Images to Inventory Script
+
 # Add Items to Shared lua
 ```['cd'] 				             = {['name'] = 'cd', 			  	  	        ['label'] = 'Compact Disk', 		    ['weight'] = 50, 		['type'] = 'item', 		['image'] = 'cd.png', 		        ['unique'] = false, 	['useable'] = false,  	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Relic of the 90s'},
 ['newspaper'] 			 	     = {['name'] = 'newspaper', 			  		['label'] = 'Old Newspaper', 		    ['weight'] = 50, 		['type'] = 'item', 		['image'] = 'newspaper.png', 		['unique'] = false,		['useable'] = false,  	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Last weeks newspaper'},
@@ -21,15 +23,4 @@ Original script by [zf-labo](https://github.com/zf-labo/zf-dumpster-qb)
 ['scrapwood'] 			 	     = {['name'] = 'scrapwood', 					['label'] = 'Broken Peice of Wood', 	['weight'] = 50, 		['type'] = 'item', 		['image'] = 'scrapwood.png', 		['unique'] = false,		['useable'] = false, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Karate chopped wood'},
 ['cardboard'] 			 	     = {['name'] = 'cardboard', 					['label'] = 'Ripped Cardboard', 	    ['weight'] = 50, 		['type'] = 'item', 		['image'] = 'cardboard.png', 		['unique'] = false,		['useable'] = false,  	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Ripped Cardboard'},
 ['ducttape'] 				     = {['name'] = 'ducttape', 			  	  	    ['label'] = 'Duct Tape', 		        ['weight'] = 50, 		['type'] = 'item', 		['image'] = 'ducttape.png', 		['unique'] = false, 	['useable'] = false,  	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Roll of Duct Tape'},
-['wires'] 			 	         = {['name'] = 'wires', 			  		    ['label'] = 'Electrical Wires', 		['weight'] = 50, 		['type'] = 'item', 		['image'] = 'wires.png', 		    ['unique'] = false,		['useable'] = false,  	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Torn Electrical Wires'},```
-	
-# Add Images to Inventory Script
-
-# Dependencies:
-* [qb-core](https://github.com/qbcore-framework/qb-core)
-* [qb-target](https://github.com/qbcore-framework/qb-target)
-
-# Optional Dependencies:
-* [ps-dispatch](https://github.com/Project-Sloth/ps-dispatch)
-* [memorygame](https://github.com/pushkart2/memorygame)
-* [qb-lock](https://github.com/YishengCheww/qb-lock)
+['wires'] 			 	         = {['name'] = 'wires', 			  		    ['label'] = 'Electrical Wires', 		['weight'] = 50, 		['type'] = 'item', 		['image'] = 'wires.png', 		    ['unique'] = false,		['useable'] = false,  	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Torn Electrical Wires'},
