@@ -12,7 +12,8 @@ Original script by [zf-labo](https://github.com/zf-labo/zf-dumpster-qb)
 # Add Images to Inventory Script
 
 # Add Items to Shared lua
-```['cd']  = {['name'] = 'cd',  ['label'] = 'Compact Disk',  ['weight'] = 50,  ['type'] = 'item',  ['image'] = 'cd.png',  ['unique'] = false,  ['useable'] = false,  ['shouldClose'] = true,  ['combinable'] = nil,  ['description'] = 'Relic of the 90s'},
+```
+['cd']  = {['name'] = 'cd',  ['label'] = 'Compact Disk',  ['weight'] = 50,  ['type'] = 'item',  ['image'] = 'cd.png',  ['unique'] = false,  ['useable'] = false,  ['shouldClose'] = true,  ['combinable'] = nil,  ['description'] = 'Relic of the 90s'},
 ['newspaper'] 			 	     = {['name'] = 'newspaper', 			  		['label'] = 'Old Newspaper', 		    ['weight'] = 50, 		['type'] = 'item', 		['image'] = 'newspaper.png', 		['unique'] = false,		['useable'] = false,  	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Last weeks newspaper'},
 ['wrapper'] 			 	     = {['name'] = 'wrapper', 					    ['label'] = 'Used Food Wrapper', 		['weight'] = 50, 		['type'] = 'item', 		['image'] = 'wrapper.png', 		    ['unique'] = false,	    ['useable'] = false,  	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Up-N-Atom Burger wrapper'},
 ['rat'] 			   	         = {['name'] = 'rat', 					        ['label'] = 'Dead Rat', 		        ['weight'] = 50, 	    ['type'] = 'item', 		['image'] = 'rat.png', 		        ['unique'] = false,	    ['useable'] = false, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Stinky dead rat'},
@@ -24,3 +25,4 @@ Original script by [zf-labo](https://github.com/zf-labo/zf-dumpster-qb)
 ['cardboard'] 			 	     = {['name'] = 'cardboard', 					['label'] = 'Ripped Cardboard', 	    ['weight'] = 50, 		['type'] = 'item', 		['image'] = 'cardboard.png', 		['unique'] = false,		['useable'] = false,  	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Ripped Cardboard'},
 ['ducttape'] 				     = {['name'] = 'ducttape', 			  	  	    ['label'] = 'Duct Tape', 		        ['weight'] = 50, 		['type'] = 'item', 		['image'] = 'ducttape.png', 		['unique'] = false, 	['useable'] = false,  	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Roll of Duct Tape'},
 ['wires'] 			 	         = {['name'] = 'wires', 			  		    ['label'] = 'Electrical Wires', 		['weight'] = 50, 		['type'] = 'item', 		['image'] = 'wires.png', 		    ['unique'] = false,		['useable'] = false,  	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Torn Electrical Wires'},
+```
