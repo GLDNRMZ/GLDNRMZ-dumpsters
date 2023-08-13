@@ -1,7 +1,7 @@
 # lb-dumpsters
 Dumpster Diving and Trash Selling
 
-Original script by [zf-labo](https://github.com/zf-labo/zf-dumpster-qb)
+Original dumpster script by [zf-labo](https://github.com/zf-labo/zf-dumpster-qb)
 
 # Additions
 * Search anything that looks like it contains trash
