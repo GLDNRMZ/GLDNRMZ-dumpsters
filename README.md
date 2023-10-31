@@ -9,6 +9,7 @@ Original dumpster script by [zf-labo](https://github.com/zf-labo/zf-dumpster-qb)
 * Trash items
 * Sell trash items to any homeless ped
 * Chance homeless ped steals your food and drugs
+* Added ablity to store items in trash. Code snippets from [Jakers](https://jakers.tebex.io/package/4923802)
 
 # Add Items to Shared lua
 ```
