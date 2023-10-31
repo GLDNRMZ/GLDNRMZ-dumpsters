@@ -32,7 +32,13 @@ CreateThread(function()
                 canInteract = function(ent)
                     return not isBusy
                 end
-            }
+            },
+            {
+                type = "client",
+                event = "lb-dumpster:client:open:Dumpster:storage",
+                icon = "far fa-trash-alt",
+                label = "Open Dumpster",
+            },
         },
         distance = 1.5
     })
@@ -80,3 +86,35 @@ RegisterNetEvent('lb-dumpster:client:MainMenu', function()
 
     exports['qb-menu']:openMenu(MainMenu)
 end)
+
+-----------
+--STORAGE--
+-----------
+RegisterNetEvent('lb-dumpster:client:open:Dumpster:storage')
+AddEventHandler('lb-dumpster:client:open:Dumpster:storage', function()
+    local DumpsterFound = ClosestContainer()
+    local Dumpster = 'Container | '..math.floor(DumpsterFound.x).. ' | '..math.floor(DumpsterFound.y)..' |'
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", Dumpster, {maxweight = 1000000, slots = 50})
+    TriggerEvent("inventory:client:SetCurrentStash", Dumpster)
+end)
+
+function ClosestContainer()
+    for _, propModel in ipairs(Config.Props) do
+        local StartShape = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0, 0.1, 0)
+        local EndShape = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0, 1.8, -0.4)
+        local RayCast = StartShapeTestRay(StartShape.x, StartShape.y, StartShape.z, EndShape.x, EndShape.y, EndShape.z, 16, PlayerPedId(), 0)
+        local Retval, Hit, Coords, Surface, EntityHit = GetShapeTestResult(RayCast)
+        local BinModel = 0
+        if EntityHit then
+            BinModel = GetEntityModel(EntityHit)
+        end
+        if GetHashKey(propModel) == BinModel then
+            local EntityHitCoords = GetEntityCoords(EntityHit)
+            if EntityHitCoords.x < 0 or EntityHitCoords.y < 0 then
+                EntityHitCoords = { x = EntityHitCoords.x + 5000, y = EntityHitCoords.y + 5000 }
+            end
+            return EntityHitCoords
+        end
+    end
+end
+
