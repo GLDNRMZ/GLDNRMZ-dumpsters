@@ -56,6 +56,7 @@ local function pGive(playerId, item, amount)
     end
 end
 
+
 function DropItem(finished, netId, playerId)
     local Player = QBCore.Functions.GetPlayer(playerId)
     if not Player then return end
@@ -116,7 +117,6 @@ end)
 -----------
 ----BUM----
 -----------
-
 --selling
 RegisterNetEvent('lb-dumpster:server:sellItems', function()
     local src = source
@@ -150,7 +150,7 @@ end)
 --stealing
 RegisterNetEvent('lb-dumpster:server:pedStealItems', function(src)
     local Player = QBCore.Functions.GetPlayer(src)
-    local itemsStolen = false -- Flag to track if any items are stolen
+    local itemsStolen = false
 
     if Player.PlayerData.items then
         local removedItems = {}
@@ -165,20 +165,36 @@ RegisterNetEvent('lb-dumpster:server:pedStealItems', function(src)
                     local amountToSteal = math.random(1, v.amount)
                     removedItems[k] = { name = itemName, amount = amountToSteal }
                     Player.Functions.RemoveItem(itemName, amountToSteal, k)
-                    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[itemName], "remove")
+                    
+                    if Config.BumSteal then
+                        TriggerClientEvent('QBCore:Notify', src, "GIVE ME YO SHIT, BITCH!")
+                        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[itemName], "remove")
+                    end
+                    
                     itemsStolen = true -- Set the flag to true
                 end
             end
         end
 
         if next(removedItems) then
-            TriggerClientEvent('QBCore:Notify', src, "GIVE ME YO SHIT, BITCH!")
             TriggerEvent('lb-dumpster:server:onPedStealItems', src, removedItems)
         end
     end
 
-    -- If no items are stolen, trigger the "You ain't got shit I want" notification
     if not itemsStolen then
         TriggerClientEvent('QBCore:Notify', src, "You ain't got shit I want")
+    end
+end)
+
+-----------
+--STORAGE--
+-----------
+RegisterNetEvent('lb-dumpster:server:openDumpsterInventory', function(dumpsterName)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    local data = { label = 'Dumpster', maxweight = Config.StorageWeight, slots = Config.StorageSize }
+
+    if Player then
+        exports['qb-inventory']:OpenInventory(src, dumpsterName, data)
     end
 end)
