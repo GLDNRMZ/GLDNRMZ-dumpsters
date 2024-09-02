@@ -1,4 +1,4 @@
-# lb-dumpsters
+# GLDNRMZ-dumpsters
 Dumpster Diving and Trash Selling
 
 Original dumpster script by [zf-labo](https://github.com/zf-labo/zf-dumpster-qb)
