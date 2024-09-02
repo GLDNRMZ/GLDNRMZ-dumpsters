@@ -1,9 +1,11 @@
 Config = {}
 
+Config.Inventory = "New" -- If using old qb-inventory change to "Old"
+
 -----------
 ----BIN----
 -----------
-Config.Props = {
+Config.Props = { -- Models that can be searched
     'prop_dumpster_4b',
     'prop_dumpster_4a',
     'prop_dumpster_3a',
@@ -19,7 +21,6 @@ Config.Props = {
     'prop_skip_08a',
     'prop_skip_10a',
     'prop_skip_02a',
-    'prop_skip_06a',
     'prop_skip_03',
     'prop_pile_dirt_06',
     'prop_pile_dirt_03',
@@ -29,13 +30,18 @@ Config.Props = {
 
 -- ## Reset Configs
 Config.ResetOnReboot = false
-Config.ResetTime = 1 -- If Config.ResetOnReboot = false. In minutes
+Config.ResetTime = 0 -- If Config.ResetOnReboot = false. In minutes
 
 -- ## Minigame Configs
 Config.Minigame = false -- Available options: false, 'qb-lock', 'memorygame', 'ps-ui'
 
 -- ## Time Configs
-Config.ProgressTime = 3 -- In secondes
+Config.ProgressTime = 3 -- Searching time in secondes
+
+-- ## Storage
+Config.Storage = true -- Allow Dumpster Storage
+Config.StorageWeight = 100000 -- Strorage Weight
+Config.StorageSize = 50 -- Storage Size
 
 -- ## Police Configs
 Config.Illegal = false -- True will send an alert using the % on Config.AlertChance
@@ -54,9 +60,9 @@ Config.HurtDamage = {
 
 -- ## Loot table
 Config.CanLootMultiple = true -- Can the player loot multiple items?
-Config.MaxLootItem = 1 -- If Config.CanLootMultiple = true. Max items the player can loot
+Config.MaxLootItem = 1 -- If true. Max items the player can loot
 
--- Tiered loot system
+-- ## Tiered loot system
 Config.LootTiers = {
     ['tier1'] = {
         chances = 75, -- The chances for this tier to be selected (out of 100)
@@ -97,46 +103,54 @@ Config.LootTiers = {
     ['tier3'] = {
         chances = 15,
         loottable = {
-            { item = 'emptyvape',          min = 1,    max = 1 },
-            { item = 'broken_handcuffs',   min = 1,    max = 1 },
-            { item = 'weapon_bat',         min = 1,    max = 1 },
+            { item = 'redwoodcigs',   min = 1,    max = 1 },
+            { item = 'debonairecigs',   min = 1,    max = 1 },
+            { item = 'cardiaquecigs',   min = 1,    max = 1 },
+            { item = 'lockpick',         min = 1,    max = 3 },
             -- Add more items to this tier as needed
         }
     },
     ['tier4'] = {
         chances = 5,
         loottable = {
-            { item = 'pistol_ammo',      min = 1,    max = 3 },
-            { item = 'thermite',          min = 1,    max = 3 },
-            { item = 'joint',            min = 1,    max = 3 },
+            { item = 'pistol_ammo',      min = 1,    max = 1 },
+            { item = 'weapon_bfknife',            min = 1,    max = 1 },
             -- Add more items to this tier as needed
         }
     },
     ['tier5'] = {
         chances = 3,
         loottable = {
-            { item = 'cocainekey',      min = 1,    max = 1 },
-            { item = 'methkey',         min = 1,    max = 1 },
-            { item = 'weedkey',         min = 1,    max = 1 },
+            { item = 'pistolammobox',       min = 1,    max = 1 },
+            { item = 'skateboard',            min = 1,    max = 1 },
             -- Add more items to this tier as needed
         }
     },
     ['tier6'] = {
+        chances = 2,
+        loottable = {
+            --{ item = 'cutter',   min = 1,    max = 1 },
+            { item = 'advancedlockpick',         min = 1,    max = 3 },
+            -- Add more items to this tier as needed
+        }
+    },
+    ['tier7'] = {
         chances = 1,
         loottable = {
             { item = 'weapon_pistol',      min = 1,    max = 1 },
             { item = 'weapon_knuckle',     min = 1,    max = 1 },
-            { item = 'thermite',           min = 1,    max = 3 },
+            { item = 'thermite',           min = 1,    max = 1 },
             -- Add more items to this tier as needed
         }
     },
+    --ADD AS MANY TIERS AS YOU WANT
 
 }
 
 -----------
 ----BUM----
 -----------
-Config.pedModels = {
+Config.pedModels = { -- Models to sell trash
     'a_f_m_tramp_01',
     'a_f_m_trampbeac_01',
     'a_m_m_tramp_01',
@@ -149,7 +163,7 @@ Config.pedModels = {
     'a_f_m_skidrow_01',
 }
 
-Config.ItemsSell = {
+Config.ItemsSell = { -- Items and prices the bums will buy
     ['cd']              = {['price'] = math.random(10, 15)},
     ['newspaper']       = {['price'] = math.random(10, 15)},
     ['wrapper']         = {['price'] = math.random(10, 15)},
@@ -162,8 +176,9 @@ Config.ItemsSell = {
     ['scrapwood']       = {['price'] = math.random(10, 15)},
 }
 
-Config.StealChance = 50
-Config.ItemsSteal = {
+Config.BumSteal = true -- Allow bums to steal from you if you do not have any items above in your inventory
+Config.StealChance = 50 -- Chance to steal from you
+Config.ItemsSteal = { -- Items that they can steal
     ['ambeer'], 
     ['dusche-beer'], 
     ['logger-beer'], 
@@ -172,9 +187,20 @@ Config.ItemsSteal = {
     ['coke'],
     ['lsd'],
     ['heroin'],
-    ['joint'],  
+    ['weed_joint'],  
     ['tosti'],			
     ['twerks_candy'],	
     ['snikkel_candy'],	
     ['sandwich'],
+}
+
+------------
+--BUM PEDS--
+------------
+Config.BumsLocation = { -- Permanent bum locations. Bums are hard to come by during the day.
+    [1] = {coords = vector4(471.65, -290.18, 46.52, 213.35),    model = 'a_m_o_soucent_02',  scenario = 'WORLD_HUMAN_BUM_FREEWAY'},
+    [2] = {coords = vector4(263.03, -1114.3, 28.66, 44.97),     model = 'a_m_m_skidrow_01',  scenario = 'WORLD_HUMAN_BUM_SLUMPED'},
+    [3] = {coords = vector4(-1390.76, -1444.91, 3.13, 232.99),  model = 'a_f_m_skidrow_01',  scenario = 'WORLD_HUMAN_BUM_STANDING'},
+    [4] = {coords = vector4(1446.86, 3640.92, 33.67, 285.74),   model = 'a_m_o_soucent_03',  scenario = 'WORLD_HUMAN_BUM_STANDING'},
+    [5] = {coords = vector4(-98.33, 6299.51, 30.43, 184.98),    model = 'a_m_o_soucent_02',  scenario = 'WORLD_HUMAN_BUM_FREEWAY'},
 }
